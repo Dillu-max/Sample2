@@ -5,461 +5,123 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ameer Suhel Mohammed — Portfolio</title>
 
-  <!-- Primary styling (single-file). Uses Times New Roman as requested. -->
-  <style>
-    /* ---------- Reset / base ---------- */
-    :root{
-      --bg:#f6f8f9;
-      --card:#ffffff;
-      --accent:#004f71;
-      --accent-2:#41b6e6;
-      --muted:#6b6f71;
-      --brand:#c4d600;
-      --max-width:1100px;
-      --radius:10px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "Times New Roman", Times, serif;
-      background:var(--bg);
-      color:#222;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* ---------- Layout ---------- */
-    .site {
-      max-width: var(--max-width);
-      margin:28px auto;
-      padding:24px;
-    }
-
-    header.site-header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:18px;
-    }
-
-    .brand {
-      text-align:center;
-      flex:1 1 auto;
-    }
-    .brand h1{
-      margin:0;
-      font-size:32px;
-      color:var(--accent);
-      letter-spacing:0.2px;
-    }
-    .contact-inline{
-      margin-top:6px;
-      font-size:14px;
-      color:var(--muted);
-    }
-    .contact-inline a{ color:var(--accent); text-decoration:none }
-    .contact-inline a:focus, .contact-inline a:hover{ color:var(--accent-2); text-decoration:underline }
-
-    /* Nav */
-    nav.main-nav{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .nav-links{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-    .nav-links a{
-      color:var(--accent);
-      text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-      padding:6px 8px;
-      border-radius:6px;
-    }
-    .nav-links a:hover,.nav-links a:focus{ background:rgba(65,182,230,0.08); outline:none }
-    .cta-resume{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:white;
-      padding:8px 12px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:700;
-      font-size:14px;
-    }
-    .cta-resume:hover{ opacity:.95; transform:translateY(-1px) }
-
-    /* Mobile nav toggle */
-    .mobile-toggle{
-      display:none;
-      background:transparent;
-      border:0;
-      font-size:20px;
-      color:var(--accent);
-    }
-
-    /* ---------- Main content card ---------- */
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:0 6px 22px rgba(20,30,40,0.06);
-      padding:28px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 320px;
-      gap:28px;
-    }
-
-    /* Left column content */
-    .section { margin-bottom:20px; }
-    .section h2{
-      margin:0 0 12px 0;
-      font-size:18px;
-      color:var(--accent-2);
-      border-bottom:1px solid #e6eaec;
-      padding-bottom:6px;
-    }
-
-    .entry{
-      margin-bottom:12px;
-    }
-    .entry .title{
-      font-weight:700;
-      color:#111;
-      display:block;
-    }
-    .entry .org{
-      font-style:italic;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .entry .date{
-      color:var(--muted);
-      float:right;
-      font-size:13px;
-    }
-    ul.bullets{ margin:8px 0 16px 18px; padding:0 }
-    ul.bullets li{ margin-bottom:8px; font-size:14px }
-
-    /* Right column (sidebar) */
-    .sidebar {
-      background:linear-gradient(180deg,#fff, #fbfcfd);
-      padding:18px;
-      border-radius:8px;
-      border:1px solid #f0f4f6;
-      height:100%;
-    }
-    .sidebar h3{ margin:0 0 8px 0; color:var(--accent) }
-    .skill-list{ display:flex; flex-wrap:wrap; gap:8px }
-    .skill {
-      background:var(--brand);
-      color:#000;
-      padding:6px 10px;
-      border-radius:6px;
-      font-size:13px;
-      font-weight:600;
-    }
-    .muted { color:var(--muted); font-size:14px }
-
-    /* Projects list */
-    .project {
-      margin-bottom:12px;
-    }
-    .project p{ margin:6px 0 0 0; font-size:14px; color:#222 }
-
-    /* Footer */
-    footer { margin-top:18px; text-align:center; color:var(--muted); font-size:13px }
-
-    /* ---------- Responsive tweaks ---------- */
-    @media (max-width: 880px){
-      .grid{ grid-template-columns: 1fr; }
-      .contact-inline{ display:block; font-size:13px }
-      .date{ float:none; display:block; margin-top:6px }
-      .nav-links{ display:none } /* hide desktop links */
-      .mobile-toggle{ display:inline-block }
-      header.site-header{ gap:8px; align-items:flex-start }
-    }
-
-    /* Mobile slide-down nav */
-    .mobile-nav {
-      display:none;
-      background:var(--card);
-      border-radius:8px;
-      padding:12px;
-      margin-bottom:12px;
-      box-shadow:0 8px 18px rgba(0,0,0,.04);
-    }
-    .mobile-nav a{ display:block; padding:8px 0; color:var(--accent); text-decoration:none }
-
-    .sr-only{
-      position:absolute!important;
-      height:1px;width:1px;
-      overflow:hidden;
-      clip:rect(1px,1px,1px,1px);
-      white-space:nowrap;
-    }
-  </style>
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="site" role="main">
+  <div class="site">
 
-    <!-- Header / nav -->
-    <header class="site-header" aria-label="Site header">
-      <div style="display:flex;align-items:center;gap:18px">
-        <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">☰</button>
-        <div class="brand">
-          <h1>Ameer Suhel Mohammed</h1>
-          <div class="contact-inline" aria-hidden="false">
-            <a href="mailto:ameersuhel123@example.com">ameersuhel123@example.com</a>
-            <span aria-hidden="true"> | </span>
-            <span class="muted">+1 (317) 737-5890</span>
-            <span aria-hidden="true"> | </span>
-            <a href="https://www.linkedin.com/in/ameer-suhel-mohammed-985687175" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <span aria-hidden="true"> | </span>
-            <a href="https://github.com/AmeersuhelMohd" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
+    <!-- Header / Nav -->
+    <header class="site-header">
+      <div class="brand">
+        <h1>Ameer Suhel Mohammed</h1>
+        <div class="contact-inline">
+          <a href="mailto:ameersuhel123@example.com">ameersuhel123@example.com</a> |
+          <span>+1 (317) 737-5890</span> |
+          <a href="https://www.linkedin.com/in/ameer-suhel-mohammed-985687175" target="_blank">LinkedIn</a> |
+          <a href="https://github.com/AmeersuhelMohd" target="_blank">GitHub</a>
         </div>
       </div>
 
-      <nav class="main-nav" aria-label="Primary">
-        <div class="nav-links" role="navigation" aria-label="Primary links">
+      <nav class="main-nav">
+        <button class="mobile-toggle" id="mobileToggle">☰</button>
+        <div class="nav-links" id="navLinks">
           <a href="#education">Education</a>
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#certifications">Certifications</a>
-        </div>
-
-        <!-- prominent resume CTA — points at Resume file inside repo folder /Resume/Ameer_suhel.pdf -->
-        <div>
-          <a class="cta-resume" href="/Resume/Ameer_suhel.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open resume in new tab">
-            ⬇ Resume
-          </a>
+          <a class="cta-resume" href="/Resume/Ameer_suhel.pdf" target="_blank">⬇ Resume</a>
         </div>
       </nav>
     </header>
 
-    <!-- Mobile nav (hidden on desktop) -->
-    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#certifications">Certifications</a>
-      <a href="/Resume/Ameer_suhel.pdf" target="_blank" rel="noopener noreferrer">Download Resume (PDF)</a>
-    </div>
-
-    <!-- Card with two-column layout -->
-    <article class="card" aria-label="Resume content">
+    <!-- Content -->
+    <article class="card">
       <div class="grid">
 
-        <!-- Left column: core resume content -->
+        <!-- Left column -->
         <div>
-          <!-- About / Education -->
-          <section id="education" class="section" aria-labelledby="educationHeading">
-            <h2 id="educationHeading">Education</h2>
-
+          <section id="education" class="section">
+            <h2>Education</h2>
             <div class="entry">
               <span class="title">Master of Science in Health Informatics</span>
               <span class="date">Aug 2021 – May 2023</span>
-              <div class="org muted">Indiana University–Purdue University Indianapolis</div>
+              <div class="org">Indiana University</div>
             </div>
-
             <div class="entry">
               <span class="title">Bachelor of Pharmacy</span>
               <span class="date">Aug 2016 – May 2020</span>
-              <div class="org muted">Acharya Nagarjuna University</div>
+              <div class="org">Acharya Nagarjuna University</div>
             </div>
           </section>
 
-          <!-- Experience -->
-          <section id="experience" class="section" aria-labelledby="experienceHeading">
-            <h2 id="experienceHeading">Experience</h2>
-
-            <div class="entry" aria-label="Eskenazi Health role">
+          <section id="experience" class="section">
+            <h2>Experience</h2>
+            <div class="entry">
               <span class="title">EPIC – SAP S/4 HANA Developer & ETL Developer</span>
               <span class="date">Apr 2023 – Present</span>
-              <div class="org muted">Eskenazi Health</div>
-              <ul class="bullets" aria-label="Responsibilities">
-                <li>Configure and maintain Epic and SAP S/4 HANA databases; monitor system health and document changes.</li>
-                <li>Design and operate ETL/ELT pipelines and develop SSIS packages for secure data transfers and reporting.</li>
-                <li>Develop SAP S/4 HANA data models; optimize queries and assist analytics teams.</li>
-                <li>Support change-control, audit-ready documentation, and on-call troubleshooting for production processes.</li>
-              </ul>
-            </div>
-
-            <div class="entry" aria-label="Research Assistant at Herman B Wells Center">
-              <span class="title">Research Assistant</span>
-              <span class="date">Oct 2021 – Apr 2024</span>
-              <div class="org muted">Herman B Wells Center, IU School of Medicine</div>
-              <ul class="bullets">
-                <li>Conducted preclinical studies and genotyping on 300+ disease samples; processed and reported results to investigators.</li>
-                <li>Applied molecular techniques (PCR, gel electrophoresis) for DNA/RNA/protein differentiation.</li>
-                <li>Maintained regulatory documentation and integrated validated data into research databases.</li>
-              </ul>
-            </div>
-
-            <div class="entry" aria-label="Data Analyst">
-              <span class="title">Data Analyst</span>
-              <span class="date">Aug 2022 – Dec 2022</span>
-              <div class="org muted">HANDS in Autism, IU School of Medicine</div>
-              <ul class="bullets">
-                <li>Collected and curated clinical research data using REDCap and Cerner; increased data accuracy by ~20%.</li>
-                <li>Performed chart reviews, managed EDC entries, and resolved data queries for study integrity.</li>
-              </ul>
-            </div>
-
-            <div class="entry" aria-label="Clinical Informatics Pharmacist">
-              <span class="title">Clinical Informatics Pharmacist</span>
-              <span class="date">Jun 2020 – May 2021</span>
-              <div class="org muted">N.R.I General Hospital</div>
-              <ul class="bullets">
-                <li>Collaborated with clinical teams to update EMR data and improve medication safety and documentation accuracy.</li>
-                <li>Supported dispensing workflows, trend analysis, and database management efforts.</li>
+              <div class="org">Eskenazi Health</div>
+              <ul>
+                <li>Configured and maintained Epic & SAP databases ensuring performance and monitoring.</li>
+                <li>Designed ETL workflows, SSIS packages, and integrated Power BI data sources.</li>
+                <li>Developed SAP S/4 HANA models and optimized queries.</li>
+                <li>Provided support and troubleshooting for production systems.</li>
               </ul>
             </div>
           </section>
 
-          <!-- Projects -->
-          <section id="projects" class="section" aria-labelledby="projectsHeading">
-            <h2 id="projectsHeading">Research & Projects</h2>
-
+          <section id="projects" class="section">
+            <h2>Projects</h2>
             <div class="project">
               <span class="title">Stroke Management System</span>
-              <div class="org muted">Excel / VBA</div>
-              <p>Built a wearable-integrated solution for stroke screening, real-time monitoring and emergency notifications.</p>
+              <p>Wearable-integrated system for stroke monitoring and emergency notifications.</p>
             </div>
-
             <div class="project">
-              <span class="title">Road Accidents Classification & Predictive Analysis</span>
-              <div class="org muted">Python / ML / Tableau</div>
-              <p>Performed predictive modeling and visual analysis of road accident datasets to uncover patterns and risk factors.</p>
+              <span class="title">Diabetes Risk Model</span>
+              <p>Machine learning models in R & SPSS for risk factor prediction.</p>
             </div>
-
-            <div class="project">
-              <span class="title">Diabetes Risk Modeling</span>
-              <div class="org muted">R / SPSS</div>
-              <p>Applied statistical tests and machine learning to identify predictors and feature importance for diabetes risk.</p>
-            </div>
-
-            <div class="project">
-              <span class="title">Stroke Analysis & Database Management</span>
-              <div class="org muted">SQL / Power BI</div>
-              <p>Designed relational schema and reporting pipelines for stroke datasets (100k+ records) with visualization in Power BI.</p>
-            </div>
-
-            <div class="project">
-              <span class="title">EHR System Integration</span>
-              <div class="org muted">XML / OpenMRS / POSTMAN</div>
-              <p>Transformed XSL/XML to JSON and posted records into OpenMRS as part of EHR integration workflows.</p>
-            </div>
-
           </section>
         </div>
 
-        <!-- Right column: sidebar with skills, certifications, quick contact -->
-        <aside class="sidebar" aria-label="Sidebar information">
-          <section class="section" id="skills" aria-labelledby="skillsHeading">
-            <h3 id="skillsHeading">Technical & Healthcare Skills</h3>
-            <div class="skill-list" role="list" aria-label="skills">
-              <span class="skill" role="listitem">SQL</span>
-              <span class="skill" role="listitem">SSIS</span>
-              <span class="skill" role="listitem">SAP S/4 HANA</span>
-              <span class="skill" role="listitem">Power BI</span>
-              <span class="skill" role="listitem">Python</span>
-              <span class="skill" role="listitem">Tableau</span>
-              <span class="skill" role="listitem">Epic Systems</span>
-              <span class="skill" role="listitem">HL7</span>
-              <span class="skill" role="listitem">HIPAA</span>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <section id="skills" class="section">
+            <h3>Skills</h3>
+            <div class="skill-list">
+              <span class="skill">SQL</span>
+              <span class="skill">SAP S/4 HANA</span>
+              <span class="skill">Power BI</span>
+              <span class="skill">Python</span>
+              <span class="skill">Epic Systems</span>
             </div>
           </section>
 
-          <section class="section" id="certifications" aria-labelledby="certsHeading">
-            <h3 id="certsHeading">Certifications</h3>
-            <ul class="bullets" aria-label="certifications">
-              <li>Epic — Cogito Fundamentals (COG170)</li>
-              <li>Epic — Clarity Data Model (CLR110)</li>
-              <li>Epic — Caboodle Data Model (CDW110)</li>
-              <li>Epic — Clinical Data Model (COG240)</li>
-              <li>Good Clinical Practice (GCP)</li>
+          <section id="certifications" class="section">
+            <h3>Certifications</h3>
+            <ul>
+              <li>Epic Cogito Fundamentals</li>
+              <li>Epic Clarity Data Model</li>
+              <li>Epic Caboodle Data Model</li>
+              <li>Good Clinical Practice</li>
             </ul>
           </section>
 
-          <section class="section" id="contact" aria-labelledby="contactHeading">
-            <h3 id="contactHeading">Contact</h3>
-            <p class="muted">Email: <a href="mailto:ameersuhel123@example.com">ameersuhel123@example.com</a></p>
-            <p class="muted">Phone: +1 (317) 737-5890</p>
-            <p style="margin-top:8px">
-              <a class="cta-resume" href="/Resume/Ameer_suhel.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download resume">⬇ Download Resume</a>
-            </p>
+          <section id="contact" class="section">
+            <h3>Contact</h3>
+            <p>Email: <a href="mailto:ameersuhel123@example.com">ameersuhel123@example.com</a></p>
+            <p>Phone: +1 (317) 737-5890</p>
           </section>
         </aside>
       </div>
     </article>
 
     <footer>
-      <p>© <span id="year"></span> Ameer Suhel Mohammed — Portfolio • Built for GitHub Pages</p>
+      <p>© <span id="year"></span> Ameer Suhel Mohammed — Portfolio</p>
     </footer>
-
   </div>
 
-  <!-- ---------- Minimal JS: mobile menu, smooth scroll, accessibility ---------- -->
-  <script>
-    (function(){
-      // Set year in footer
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Mobile nav toggle
-      var toggle = document.getElementById('mobileToggle');
-      var mobileNav = document.getElementById('mobileNav');
-      toggle.addEventListener('click', function(){
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', String(!expanded));
-        if(mobileNav.style.display === 'block'){
-          mobileNav.style.display = 'none';
-          mobileNav.setAttribute('aria-hidden','true');
-        } else {
-          mobileNav.style.display = 'block';
-          mobileNav.setAttribute('aria-hidden','false');
-        }
-      });
-
-      // Smooth scrolling for anchor links (native but ensure behavior)
-      document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
-        anchor.addEventListener('click', function(e){
-          e.preventDefault();
-          var target = document.querySelector(this.getAttribute('href'));
-          if(!target) return;
-          target.scrollIntoView({behavior:'smooth', block:'start'});
-          // For mobile menu: close after click
-          if(window.innerWidth < 880 && mobileNav.style.display === 'block'){
-            mobileNav.style.display = 'none';
-            mobileNav.setAttribute('aria-hidden','true');
-            toggle.setAttribute('aria-expanded','false');
-          }
-        });
-      });
-
-      // Improve keyboard focus visibility for mouse users
-      function handleFirstTab(e) {
-        if(e.key === 'Tab'){
-          document.body.classList.add('user-is-tabbing');
-          window.removeEventListener('keydown', handleFirstTab);
-        }
-      }
-      window.addEventListener('keydown', handleFirstTab);
-    })();
-  </script>
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>
